@@ -13,7 +13,7 @@ components:
         - pet
       properties:
         pet:
-          $ref: '#/components/schemas/Pet'
+          $ref: "#/components/schemas/Pet"
     Pet:
       type: object
       required:
@@ -24,12 +24,12 @@ components:
       discriminator:
         propertyName: petType
         mapping:
-          cat: '#/components/schemas/Cat'
-          dog: '#/components/schemas/Dog'
-          lizard: '#/components/schemas/Lizard'
+          cat: "#/components/schemas/Cat"
+          dog: "#/components/schemas/Dog"
+          lizard: "#/components/schemas/Lizard"
     Cat:
       allOf:
-        - $ref: '#/components/schemas/Pet'
+        - $ref: "#/components/schemas/Pet"
         - type: object
           # all other properties specific to a `Cat`
           properties:
@@ -37,7 +37,7 @@ components:
               type: string
     Dog:
       allOf:
-        - $ref: '#/components/schemas/Pet'
+        - $ref: "#/components/schemas/Pet"
         - type: object
           # all other properties specific to a `Dog`
           properties:
@@ -45,7 +45,7 @@ components:
               type: string
     Lizard:
       allOf:
-        - $ref: '#/components/schemas/Pet'
+        - $ref: "#/components/schemas/Pet"
         - type: object
           # all other properties specific to a `Lizard`
           properties:

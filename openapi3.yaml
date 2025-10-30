@@ -12,15 +12,15 @@ components:
       properties:
         pet:
           oneOf:
-            - $ref: '#/components/schemas/Cat'
-            - $ref: '#/components/schemas/Dog'
-            - $ref: '#/components/schemas/Lizard'
+            - $ref: "#/components/schemas/Cat"
+            - $ref: "#/components/schemas/Dog"
+            - $ref: "#/components/schemas/Lizard"
           discriminator:
-              propertyName: petType
-              mapping:
-                cat: '#/components/schemas/Cat'
-                dog: '#/components/schemas/Dog'
-                lizard: '#/components/schemas/Lizard'
+            propertyName: petType
+            mapping:
+              cat: "#/components/schemas/Cat"
+              dog: "#/components/schemas/Dog"
+              lizard: "#/components/schemas/Lizard"
     Pet:
       type: object
       required:

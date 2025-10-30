@@ -11,7 +11,7 @@ components:
         - pet
       properties:
         pet:
-          $ref: '#/components/schemas/Pet'
+          $ref: "#/components/schemas/Pet"
     Pet:
       type: object
       required:
@@ -20,15 +20,15 @@ components:
         petType:
           type: string
       oneOf:
-        - $ref: '#/components/schemas/Cat'
-        - $ref: '#/components/schemas/Dog'
-        - $ref: '#/components/schemas/Lizard'
+        - $ref: "#/components/schemas/Cat"
+        - $ref: "#/components/schemas/Dog"
+        - $ref: "#/components/schemas/Lizard"
       discriminator:
-          propertyName: petType
-          mapping:
-            cat: '#/components/schemas/Cat'
-            dog: '#/components/schemas/Dog'
-            lizard: '#/components/schemas/Lizard'
+        propertyName: petType
+        mapping:
+          cat: "#/components/schemas/Cat"
+          dog: "#/components/schemas/Dog"
+          lizard: "#/components/schemas/Lizard"
     Cat:
       type: object
       # all other properties specific to a `Cat`
