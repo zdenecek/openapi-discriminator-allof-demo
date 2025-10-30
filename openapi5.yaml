@@ -1,0 +1,59 @@
+# Example from https://spec.openapis.org/oas/v3.1.1.html#examples-1
+
+openapi: 3.1.0
+info:
+  title: Test
+  description: "Test API"
+  version: 0.0.0
+components:
+  schemas:
+    PetContainer:
+      type: object
+      required:
+        - pet
+      properties:
+        pet:
+          $ref: "#/components/schemas/Pet"
+    Pet:
+      allOf:
+        - type: object
+          required:
+            - petType
+          properties:
+            petType:
+              type: string
+        - type: object
+          oneOf:
+            - $ref: "#/components/schemas/Cat"
+            - $ref: "#/components/schemas/Dog"
+            - $ref: "#/components/schemas/Lizard"
+          discriminator:
+            propertyName: petType
+            mapping:
+              cat: "#/components/schemas/Cat"
+              dog: "#/components/schemas/Dog"
+              lizard: "#/components/schemas/Lizard"
+    Cat:
+      allOf:
+        - $ref: "#/components/schemas/Pet"
+        - type: object
+          # all other properties specific to a `Cat`
+          properties:
+            name:
+              type: string
+    Dog:
+      allOf:
+        - $ref: "#/components/schemas/Pet"
+        - type: object
+          # all other properties specific to a `Dog`
+          properties:
+            bark:
+              type: string
+    Lizard:
+      allOf:
+        - $ref: "#/components/schemas/Pet"
+        - type: object
+          # all other properties specific to a `Lizard`
+          properties:
+            lovesRocks:
+              type: boolean

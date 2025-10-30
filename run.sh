@@ -2,9 +2,10 @@
 
 #!/usr/bin/env bash
 
-set -euo pipefail
+# set -euo pipefail
 
 SCENARIOS="${1:-test-datamodel-code-generator-python test-openapi-generator-python}"
+FILES="${2:-openapi1.yaml openapi2.yaml openapi3.yaml openapi4.yaml openapi5.yaml}"
 
 declare -a RESULTS=()
 
@@ -33,15 +34,18 @@ for scenario in $SCENARIOS; do
     echo $PWD
     echo "Running $scenario"
     ./init.sh
-    for file in openapi1.yaml openapi2.yaml openapi3.yaml; do
+    for file in $FILES; do
         echo "Running $file"
         echo "Generating schema"
         ./generate-schema.sh ../$file
         echo "Running test"
-        output=$(./run-test.sh)
-        cat_type=$(printf "%s" "$output" | python3 -c 'import sys, json; print(json.load(sys.stdin)["cat_type"])')
-        is_cat=$(printf "%s" "$output" | python3 -c 'import sys, json; v=json.load(sys.stdin)["is_instance_of_cat"]; print("true" if v else "false")')
-        RESULTS+=("$scenario|$file|$cat_type|$is_cat")
+        if output=$(./run-test.sh 2>&1); then
+            cat_type=$(printf "%s" "$output" | python3 -c 'import sys, json; print(json.load(sys.stdin)["cat_type"])')
+            is_cat=$(printf "%s" "$output" | python3 -c 'import sys, json; v=json.load(sys.stdin)["is_instance_of_cat"]; print("true" if v else "false")')
+            RESULTS+=("$scenario|$file|$cat_type|$is_cat")
+        else
+            RESULTS+=("$scenario|$file|ERROR|ERROR")
+        fi
     done
     ./deinit.sh
     cd ..

@@ -21,10 +21,14 @@ This follows the OpenAPI spec example: [https://spec.openapis.org/oas/v3.1.1.htm
 
 How will Python code generation tools handle this?
 
-I've prepared three OpenAPI specs:
-- [`openapi1.yaml`](openapi1.yaml): example from the OpenAPI spec with allOf without explicitely listing the subtypes.
-- [`openapi2.yaml`](openapi2.yaml): using oneOf in the parent type with discriminator.
-- [`openapi3.yaml`](openapi3.yaml): using oneOf in the reference with discriminator.
+I've prepared five OpenAPI specs:
+- [`openapi1.yaml`](openapi1.yaml): example from the OpenAPI spec with `allOf` without explicitely listing the subtypes.
+- [`openapi2.yaml`](openapi2.yaml): using `oneOf` in the parent type with `discriminator`.
+- [`openapi3.yaml`](openapi3.yaml): using `oneOf` in the reference with `discriminator`.
+
+Additional specs:
+- [`openapi4.yaml`](openapi4.yaml): same as `openapi2.yaml` but with additional `allOf` in the parent type 
+- [`openapi5.yaml`](openapi5.yaml): same as `openapi4.yaml` but with additional `type: object` just in case
 
 Then there's a simple scenario:
 ```python
@@ -57,13 +61,17 @@ And we want to check if the generated code can:
 ### Results
 
 | scenario                             | file          | type            | is_cat |
-|--------------------------------------|---------------|----------------|---------|
-| test-datamodel-code-generator-python | openapi1.yaml | Pet             | false| 
-| test-datamodel-code-generator-python | openapi2.yaml | Pet             | false|
-| test-datamodel-code-generator-python | openapi3.yaml | Cat             | true|
-| test-openapi-generator-python        | openapi1.yaml | Pet             | false|
-| test-openapi-generator-python        | openapi2.yaml | Pet             | false|
-| test-openapi-generator-python        | openapi3.yaml | PetContainerPet | false|
+| ------------------------------------ | ------------- | --------------- | ------ |
+| test-datamodel-code-generator-python | openapi1.yaml | Pet             | false  |
+| test-datamodel-code-generator-python | openapi2.yaml | Pet             | false  |
+| test-datamodel-code-generator-python | openapi3.yaml | Cat             | true   |
+| test-datamodel-code-generator-python | openapi4.yaml | ERROR           | ERROR  |
+| test-datamodel-code-generator-python | openapi5.yaml | ERROR           | ERROR  |
+| test-openapi-generator-python        | openapi1.yaml | Pet             | false  |
+| test-openapi-generator-python        | openapi2.yaml | Pet             | false  |
+| test-openapi-generator-python        | openapi3.yaml | PetContainerPet | false  |
+| test-openapi-generator-python        | openapi4.yaml | Pet             | false  |
+| test-openapi-generator-python        | openapi5.yaml | Pet             | false  |
 
 
 ## Conclusions
