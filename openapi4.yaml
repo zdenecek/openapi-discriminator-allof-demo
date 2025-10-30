@@ -1,0 +1,50 @@
+openapi: 3.1.0
+info:
+  title: Test
+  description: "Test API"
+  version: 0.0.0
+components:
+  schemas:
+    PetContainer:
+      type: object
+      required:
+        - pet
+      properties:
+        pet:
+          $ref: '#/components/schemas/Pet'
+    Pet:
+      allOf:
+      - type: object
+        required:
+          - petType
+        properties:
+        petType:
+          type: string
+      - oneOf:
+          - $ref: '#/components/schemas/Cat'
+          - $ref: '#/components/schemas/Dog'
+          - $ref: '#/components/schemas/Lizard'
+        discriminator:
+          propertyName: petType
+          mapping:
+            cat: '#/components/schemas/Cat'
+            dog: '#/components/schemas/Dog'
+            lizard: '#/components/schemas/Lizard'
+    Cat:
+      type: object
+      # all other properties specific to a `Cat`
+      properties:
+        name:
+          type: string
+    Dog:
+      type: object
+      # all other properties specific to a `Dog`
+      properties:
+        bark:
+          type: string
+    Lizard:
+      type: object
+      # all other properties specific to a `Lizard`
+      properties:
+        lovesRocks:
+          type: boolean
