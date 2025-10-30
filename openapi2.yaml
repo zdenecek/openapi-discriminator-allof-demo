@@ -20,9 +20,9 @@ components:
         petType:
           type: string
       oneOf:
-          - $ref: '#/components/schemas/Cat'
-          - $ref: '#/components/schemas/Dog'
-          - $ref: '#/components/schemas/Lizard'
+        - $ref: '#/components/schemas/Cat'
+        - $ref: '#/components/schemas/Dog'
+        - $ref: '#/components/schemas/Lizard'
       discriminator:
           propertyName: petType
           mapping:

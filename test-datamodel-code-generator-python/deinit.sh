@@ -1,0 +1,2 @@
+
+rm schemas.py
