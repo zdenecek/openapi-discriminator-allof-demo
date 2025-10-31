@@ -5,6 +5,16 @@ info:
   title: Test
   description: "Test API"
   version: 0.0.0
+paths:
+  /pet:
+    get:
+      responses:
+        '200':
+          description: "Pet"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PetContainer"
 components:
   schemas:
     PetContainer:

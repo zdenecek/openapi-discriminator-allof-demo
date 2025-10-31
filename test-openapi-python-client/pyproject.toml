@@ -1,0 +1,17 @@
+[project]
+name = "test-client"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Zdeněk Tomis",email = "zdenek.tomis@ataccama.com"}
+]
+readme = "README.md"
+requires-python = ">=3.11,<4"
+dependencies = [
+    "openapi-python-client (>=0.27.0,<0.28.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
