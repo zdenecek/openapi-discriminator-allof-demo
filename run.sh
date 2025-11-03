@@ -4,10 +4,13 @@
 
 # set -euo pipefail
 
-SCENARIOS="${1:-test-datamodel-code-generator-python test-openapi-generator-python}"
-FILES="${2:-openapi1.yaml openapi2.yaml openapi3.yaml openapi4.yaml openapi5.yaml}"
+SCENARIOS="${1:-test-datamodel-code-generator-python test-openapi-generator-python test-openapi-python-client}"
+FILES="${2:-$(ls openapi*.yaml | xargs -n1 basename | tr '\n' ' ')}"
 
 declare -a RESULTS=()
+
+echo "SCENARIOS: $SCENARIOS"
+echo "FILES: $FILES"
 
 print_results() {
     if [ ${#RESULTS[@]} -eq 0 ]; then
