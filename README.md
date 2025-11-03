@@ -25,8 +25,9 @@ I've prepared five OpenAPI specs:
 - [`openapi1.yaml`](openapi1.yaml): example from the OpenAPI spec with `allOf` without explicitely listing the subtypes.
 - [`openapi2.yaml`](openapi2.yaml): using `oneOf` in the parent type with `discriminator`.
 - [`openapi3.yaml`](openapi3.yaml): using `oneOf` in the reference with `discriminator`.
+- [`openapi6.yaml`](openapi6.yaml): using a base type and a wrapping type with just oneOf in the wrapping type.
 
-Additional specs:
+Additional specs (variations):
 
 - [`openapi4.yaml`](openapi4.yaml): same as `openapi2.yaml` but with additional `allOf` in the parent type
 - [`openapi5.yaml`](openapi5.yaml): same as `openapi4.yaml` but with additional `type: object` just in case
@@ -60,6 +61,7 @@ And we want to check if the generated code can:
 - **Scenarios**:
   - `test-datamodel-code-generator-python` - using [datamodel-code-generator](https://github.com/koxudaxi/datamodel-code-generator) to generate Pydantic v2 models.
   - `test-openapi-generator-python` - using [openapi-generator](https://github.com/OpenAPITools/openapi-generator) to generate Python clients.
+  - `test-openapi-python-client` - using [openapi-python-client](https://github.com/openapi-generators/openapi-python-client) to generate Python clients.
 
 ### Results
 
