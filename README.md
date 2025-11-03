@@ -86,9 +86,22 @@ And we want to check if the generated code can:
 | test-openapi-python-client           | openapi5.yaml | Pet             | ❌     |
 | test-openapi-python-client           | openapi6.yaml | Pet             | ❌     |
 
-## Conclusions
+## Conclusions and thoughts
 
-Nothing works as expected.
+[`datamodel-code-generator`](https://github.com/koxudaxi/datamodel-code-generator) is the only tool that supports polymorphism out of the box.
+
+Support for polymorphism is not consistent across the tools and very limited.
+
+The first spec `openapi1.yaml` taken as a simple example directly from the OpenAPI spec is not supported by any of the tools. (!)
+
+Scenario 3 is working but requires verbose spec and is not very practical.
+
+Scenarios 2,4, and 5 work but the typing produced is not minimal, adding more types than necessary which could prove confusing for the user.
+
+For scenario 6 to work, `datamodel-code-generator` requires either:
+
+- `collapse-root-models` or
+- `preserve-model-order` and make sure the spec is defined without forward references. (unconceptual as the spec should allow forward references)
 
 ## How to run
 
