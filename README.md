@@ -65,21 +65,24 @@ And we want to check if the generated code can:
 
 | scenario                             | file          | type            | is_cat |
 | ------------------------------------ | ------------- | --------------- | ------ |
-| test-datamodel-code-generator-python | openapi1.yaml | Pet             | false  |
-| test-datamodel-code-generator-python | openapi2.yaml | Pet             | false  |
-| test-datamodel-code-generator-python | openapi3.yaml | Cat             | true   |
-| test-datamodel-code-generator-python | openapi4.yaml | ERROR           | ERROR  |
-| test-datamodel-code-generator-python | openapi5.yaml | ERROR           | ERROR  |
-| test-openapi-generator-python        | openapi1.yaml | Pet             | false  |
-| test-openapi-generator-python        | openapi2.yaml | Pet             | false  |
-| test-openapi-generator-python        | openapi3.yaml | PetContainerPet | false  |
-| test-openapi-generator-python        | openapi4.yaml | Pet             | false  |
-| test-openapi-generator-python        | openapi5.yaml | Pet             | false  |
-| test-openapi-python-client           | openapi1.yaml | Pet             | false  |
-| test-openapi-python-client           | openapi2.yaml | Pet             | false  |
-| test-openapi-python-client           | openapi3.yaml | Pet             | false  |
-| test-openapi-python-client           | openapi4.yaml | Pet             | false  |
-| test-openapi-python-client           | openapi5.yaml | Pet             | false  |
+| test-datamodel-code-generator-python | openapi1.yaml | Pet             | ❌     |
+| test-datamodel-code-generator-python | openapi2.yaml | Pet1            | ✅     |
+| test-datamodel-code-generator-python | openapi3.yaml | Cat ✅          | ✅     |
+| test-datamodel-code-generator-python | openapi4.yaml | Pet2            | ✅     |
+| test-datamodel-code-generator-python | openapi5.yaml | Pet2            | ✅     |
+| test-datamodel-code-generator-python | openapi6.yaml | Cat ✅          | ✅     |
+| test-openapi-generator-python        | openapi1.yaml | Pet             | ❌     |
+| test-openapi-generator-python        | openapi2.yaml | Pet             | ❌     |
+| test-openapi-generator-python        | openapi3.yaml | PetContainerPet | ❌     |
+| test-openapi-generator-python        | openapi4.yaml | Pet             | ❌     |
+| test-openapi-generator-python        | openapi5.yaml | Pet             | ❌     |
+| test-openapi-generator-python        | openapi6.yaml | Pet             | ❌     |
+| test-openapi-python-client           | openapi1.yaml | Pet             | ❌     |
+| test-openapi-python-client           | openapi2.yaml | Pet             | ❌     |
+| test-openapi-python-client           | openapi3.yaml | Pet             | ❌     |
+| test-openapi-python-client           | openapi4.yaml | Pet             | ❌     |
+| test-openapi-python-client           | openapi5.yaml | Pet             | ❌     |
+| test-openapi-python-client           | openapi6.yaml | Pet             | ❌     |
 
 ## Conclusions
 
